@@ -57,7 +57,7 @@ const Home = () => {
   return (
     <>
       <main className="pt-24">
-        <section className="bg-gradient-to-b from-black to-gray-900 flex flex-col md:flex-row justify-center items-center text-center md:text-left lg:w-screen">
+        <section className=" bg-gradient-to-b from-black to-gray-900 flex flex-col md:flex-row justify-center items-center text-center md:text-left lg:w-screen">
           <div className="flex w-full md:w-1/2 items-center justify-center p-4">
             <div className="max-w-4xl">
               <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
@@ -69,7 +69,7 @@ const Home = () => {
               </p>
               <button
                 onClick={goToContactPage}
-                className="h-12 md:h-16 w-36 md:w-48 text-lg md:text-xl bg-[#9D00FF] text-black py-3 px-6 rounded-lg font-semibold transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-purple-500 duration-300"
+                className="h-12 md:h-16 w-36 md:w-48 text-md md:text-xl bg-[#9D00FF] text-black py-3 px-6 rounded-lg font-semibold transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-purple-500 duration-300"
               >
                 Contact Me
               </button>

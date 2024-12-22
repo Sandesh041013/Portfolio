@@ -30,7 +30,7 @@ const Login = () => {
     <div className=" lg:w-screen lg:h-screen bg-black flex justify-center items-center text-white px-4">
       <div className="mt-[95px] lg:flex lg:grid-cols-2 justify-center items-center lg:h-[550px] w-full max-w-5xl bg-slate-900 rounded-lg lg:mt-20">
         {/* Image Section */}
-        <div className="flex justify-center items-center w-full lg:w-1/2">
+        <div className="flex justify-center items-center w-full lg:w-1/2 mt-8">
           <img
             className="h-32 w-32 sm:h-48 sm:w-48 lg:h-96 lg:w-96"
             src="10892514.png"

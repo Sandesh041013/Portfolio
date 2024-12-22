@@ -9,8 +9,8 @@ const Forgetpass = () => {
   };
 
   return (
-    <div className="lg:h-screen w-screen bg-black flex justify-center items-center text-white px-4 ">
-      <div className="bg-slate-900 flex flex-col lg:flex-row justify-center items-center lg:h-[650px] w-full max-w-5xl rounded-lg lg:mt-20">
+    <div className="  h-screen lg:h-screen w-screen bg-black flex justify-center items-center text-white px-4 ">
+      <div className=" mt-28 bg-slate-900 flex flex-col lg:flex-row justify-center items-center lg:h-[650px] w-full max-w-5xl rounded-lg lg:mt-20">
         {/* Image Section */}
         <div className="flex justify-center items-center w-full lg:w-1/2 p-4">
           <img

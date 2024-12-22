@@ -55,8 +55,8 @@ const Navbar = () => {
   return (
     <div className='h-24 bg-black text-slate-200 flex items-center justify-between px-6 fixed w-screen z-50 '>
       {/* Logo */}
-      <div className='text-3xl font-bold font-sans h-24 flex items-center'>
-        <img src="logo.jpg" alt="Logo" className="h-14 w-18 ml-14" />
+      <div className=' justify-start  text-3xl font-bold font-sans h-24 flex items-center'>
+        <img src="logo.jpg" alt="Logo" className="h-14 w-18 " />
       </div>
 
       {/* Hamburger Icon for Mobile - aligned to the right */}
@@ -67,7 +67,7 @@ const Navbar = () => {
       {/* Navigation Links - Centered on small screens */}
       <nav className={`lg:flex ${isOpen ? 'flex' : 'hidden'} flex-col  lg:text-xl sm:text-3xl font-semibold bg-black  w-full lg:bg-transparent lg:static absolute top-24 left-0 right-0`}>
       <ul
-    className="flex flex-col lg:flex-row gap-6 lg:gap-10 lg:justify-end items-center min-h-screen lg:min-h-0 w-full sm:text-gray-400 lg:mt-0 mt-32 "
+    className="flex flex-col lg:flex-row gap-6 lg:gap-10 lg:justify-end items-center min-h-screen lg:min-h-0 w-full sm:text-gray-400 lg:mt-0 mt-32 text-xl"
   >
           {navItems.map((item) => (
             <li key={item.id}>

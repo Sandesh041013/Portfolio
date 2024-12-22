@@ -9,8 +9,8 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-black h-screen w-screen flex justify-center items-center text-white px-4">
-      <div className="bg-slate-900 flex flex-col lg:flex-row justify-center items-center lg:h-[650px] w-full max-w-5xl rounded-lg">
+    <div className="bg-black  w-screen flex justify-center items-center text-white px-4">
+      <div className="bg-slate-900 flex flex-col lg:flex-row justify-center items-center lg:h-[650px] w-full max-w-5xl rounded-lg mt-24">
         {/* Image Section */}
         <div className="flex justify-center items-center w-full lg:w-1/2 p-4">
           <img
