@@ -1,39 +1,12 @@
 import React from 'react'
-
-// const data = [
-//     {
-//         id: 1,
-//         service: "DATABASE SERVICES",
-//         description: "database design and optimization",
-//         price: " Starting from $1200",
-//         provider: "DataMasters Ltd",
-//         icon: "https://portfolio.durlavparajuli.com.np/vite.svg"
-//     },  
-//     {
-//         id: 2,
-//         service: "Mobile App Development",
-//         description: "Mobile app development for iOS and Android",
-//         price: " Starting from $2000",
-//         provider: "DataMasters Ltd",
-//         icon: "https://portfolio.durlavparajuli.com.np/vite.svg"
-//     },  
-//     {
-//         id: 3,
-//         service: "DATABASE SERVICES",
-//         description: "database design and optimization",
-//         price: " Starting from $1200",
-//         provider: "DataMasters Ltd",
-//         icon: "https://portfolio.durlavparajuli.com.np/vite.svg"
-//     },   
-
-// ];
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const URL = "https://api.durlavparajuli.com.np/api/data/service";
 
 const Servicess = () => {
-    const [data, setData] = useState([]);
-
+const [data, setData] = useState([]);
+const navigate=useNavigate()
     // Function to fetch data from the API
     const fetchApi = async () => {
         try {
@@ -61,7 +34,10 @@ const Servicess = () => {
             <div className='grid grid-cols-3 gap-24'>
                 {data.length > 0 ? (
                     data.map((item) => (
-                        <div
+                        <div 
+                        onClick={()=>{
+                            navigate(`/servicess/${item._id}`)
+                        }}
                             key={item.id}
                             className='border-2 border-white w-[350px] h-[450px] flex flex-col justify-center items-center gap-4'
                         >

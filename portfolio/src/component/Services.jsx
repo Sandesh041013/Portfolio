@@ -2,7 +2,6 @@
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaGithub } from 'react-icons/fa';
 import { SiAdobephotoshop, SiTailwindcss } from 'react-icons/si';
 import { FiFigma } from 'react-icons/fi';
-
 const skills = [
   { name: "HTML", icon: <FaHtml5 />, color: "text-[#DD4D26]" },
   { name: "CSS", icon: <FaCss3Alt />, color: "text-[#2962E9]" },

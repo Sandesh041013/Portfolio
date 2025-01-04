@@ -1,160 +1,171 @@
-import React, { useState } from 'react';
+
+import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { useEffect } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { formvalidn } from "../Data/Loginschema";
+import * as Yup from 'yup'; 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [error, seterror] = useState({})
-  const [issubmitted, setissubmitted] = useState(false)
-const errorfun = () => {
-  const errorData = {};
-  if (formData.name === "") {
-    errorData.name = "Please enter your name";
-  }
-  if (formData.email === "") {
-    errorData.email = "Please enter your email"; 
-  } else if (!formData.email.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)) {
-    errorData.email = "Please enter a valid email"; 
-  }
-  if (formData.message === "") {
-    errorData.message = "Please enter a message";
-  }
+  // const formvalidn = Yup.object({
+  //   name: Yup.string().required('Name is required'),
+  //   email: Yup.string()
+  //     .email('Invalid email address')
+  //     .required('Email is required'),
+  //   message: Yup.string()
+  //     .min(6, 'Password must be at least 6 characters long')
+  //     .required('Password is required'),
+      
+  // });
+  // const [formData, setformData] = useState({
+  //   name: "",
+  //   email: "",
+  //   message: "",
+  // });
+  // const [errorData, seterrorData] = useState({});
 
-  return errorData;
-};
+  // const validation = () => {
+  //   let errorData = {};
+  //   if (!formData.name.trim()) {
+  //     errorData.name = "Name is required.";
+  //   }
+  //   if (!formData.email.trim()) {
+  //     errorData.email = "Email is required.";
+  //   } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+  //     errorData.email = "Email is invalid.";
+  //   }
+  //   if (!formData.message.trim()) {
+  //     errorData.message = "Message is required.";
+  //   }
+  //   return errorData;
+  // };
 
-  // message sent successfully matlab tyo enter gareko msg chai pugeo
-  const URL = "https://api.durlavparajuli.com.np/api/form/contact"
+  const URL = "https://api.durlavparajuli.com.np/api/form/contact";
+
   const postMessage = async () => {
     try {
       const res = await fetch(URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      })
+      });
+
       if (res.ok) {
         const res_data = await res.json();
         console.log(res_data);
-        toast.success("submitted")
+        // toast.success("submitted");
+        setformData({ name: "", email: "", message: "" });
+      } else {
+        // toast.error("failed");
       }
-      else {
-        toast.error("Failed")
-      }
-
-    } catch (err) {
-      console.error(err)
-      toast.error("something went wrong please try again later")
-      // console.log(err)
+    } catch (error) {
+      // toast.error("server error");
+      console.log(error);
     }
-  }
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
   };
 
-  // const handleSubmit = (e) => {
+  // function handlesubmmit(e) {
   //   e.preventDefault();
-  //   postMessage();
-  //   const errordatas=errorfun();
-  //   console.log(errordatas)
-  //   seterror(errorfun())
-  //   // Add form submission logic (like API calls) here
-  //    console.log(formData);
+  //   const validationerror = validation();
 
-  //   if(JSON.stringify(errordatas)=="{}"){
-  //     setissubmitted(true);
+  //   if (Object.keys(validationerror).length === 0) {
+  //     console.log(formData);
+  //     postMessage();
+  //     toast.success("submitted");
+  //   } else {
+  //     console.log(validationerror);
+  //     seterrorData(validationerror);
+  //     toast.error("failed");
   //   }
+  // }
+  // const inputsubmmit = (e) => {
+  //   const { name, value } = e.target;
+  //   setformData({ ...formData, [name]: value });
   // };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const errordatas = errorfun();
-    seterror(errordatas);
-    
-    // If there are no errors, proceed with submission
-    if (Object.keys(errordatas).length === 0) {
-      setissubmitted(true);
-      postMessage(); // Only call postMessage if there are no errors
-      console.log(formData); // Only log formData if there are no errors
-    }
-  };
-  
   return (
     <>
-      {!issubmitted ? (
-        <div className="flex items-center justify-center lg:w-screen min-h-screen bg-gradient-to-b to-black from-gray-900">
-          <div className="p-8 bg-gray-800 rounded-lg shadow-2xl w-[600px] mt-28">
-            <h2 className="text-5xl font-bold text-center text-[#9D00FF]">Contact Me</h2>
-            <form className="mt-4">
-              <div className="mb-4">
-                <label htmlFor="name" className="block mb-2 text-xl font-medium text-gray-300">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-lg outline-none h-16 text-xl"
-                  placeholder="Your Name"
-                />
-                <p className="text-red-500">{error.name}</p>
-              </div>
-              <div className="mb-4">
-                <label htmlFor="email" className="block mb-2 text-lg font-medium text-gray-300">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-lg outline-none h-16 text-xl"
-                  placeholder="Your Email"
-                />
-                <p className="text-red-500">{error.email}</p>
-              </div>
-              <div className="mb-4">
-                <label htmlFor="message" className="block mb-2 text-lg font-medium text-gray-300">
-                  Message
-                </label>
-                <input
-                  type="text"
-                  name="message"
-                  id="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-lg outline-none h-16 text-xl"
-                  placeholder="Your Message"
-                />
-                <p className="text-red-500">{error.message}</p>
-              </div>
-              <button
-                onClick={handleSubmit}
-                className="text-xl w-full px-4 py-2 text-white bg-[#9D00FF] rounded-lg hover:bg-purple-500 h-14"
-              >
-                Send Message
-              </button>
-            </form>
+    <Formik
+      initialValues={{ name: '', email: '', message: '' }}
+      validationSchema={formvalidn} // Passing the validation function
+      onSubmit={(values,{resetForm}) => {
+        postMessage()
+        resetForm();
+        toast.success("Submitted")
+        console.log('form data:', values); // Logging the form data
+      }}
+      
+    >
+
+   {({handleSubmit})=>(
+    <div className="bg-gradient-to-b to-black from-gray-900 min-h-screen grid items-center justify-center font-poppins lg:w-screen ">
+        <div className="bg-gray-900 lg:w-[600px] w-[410px] lg:h-max-full rounded-lg grid p-5 lg:p-10 ">
+          <div className="text-[#9D00FF] lg:text-4xl text-3xl text-center">
+            <h1 className="font-semibold ">Contact Us!</h1>
+          </div>
+          <div className="grid mt-6">
+            <Form>
+            
+            <div className="h-24">
+              <label className="text-white text-xl font-semibold space-y-2" htmlFor="name">
+                Name:
+              </label>
+              <Field
+                className="w-full h-12 p-4 rounded-md text-xl outline hover:outline-green-400 outline-2"
+                type="text"
+                placeholder="Your Name"
+                name="name"
+              />
+              <ErrorMessage name="name" component="div" className="text-red-500" />
+             
+            </div>
+            <div className="h-24">
+              <label className="text-white text-xl font-semibold space-y-2" htmlFor="name">
+              Email:
+              </label>
+              <Field
+                className="w-full h-12 p-4 rounded-md text-xl outline hover:outline-green-400 outline-2"
+                type="text"
+                placeholder="Your email"
+                name="email"
+              />
+              <ErrorMessage name="email" component="div" className="text-red-500" />
+             
+            </div>
+            <div className="h-24">
+              <label className="text-white text-xl font-semibold space-y-2" htmlFor="name">
+                Message:
+              </label>
+              <Field
+                className="w-full h-12 p-4 rounded-md text-xl outline hover:outline-green-400 outline-2"
+                type="text"
+                placeholder=" Your Message"
+                name="message"
+              />
+              <ErrorMessage name="message" component="div" className="text-red-500" />
+             
+            </div>
+
+           
+            </Form>
+          </div>
+
+          {/* submmit button */}
+          <div className="flex items-center justify-center p-10 lg:p-6">
+            <button
+              className="bg-[#9D00FF] rounded-lg hover:bg-purple-500 h-14 w-[300px] mt-10 text-center text-white text-xl font-semibold hover:scale-105 transition-transform  duration-300 "
+             onClick={handleSubmit}
+            >
+              Submit
+            </button>
           </div>
         </div>
-      ) : (
-        <>
-           {/* name:{formData.name}
-        email:{formData.email}
-        message:{formData.password}  */}
-        </>
-      )}
-
+      </div>
+   )}
+      
+      </Formik>
     </>
+
   );
 };
 
-export default ContactForm
+export default ContactForm;

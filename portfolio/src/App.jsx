@@ -12,6 +12,9 @@ import Resister from './pages/Resister'
 import {  BeatLoader } from "react-spinners"
 import Footer from './Navigation/Footer';
 import Forgetpass from './pages/Forgetpass';
+import SingleService from './component/SingleService';
+import Dashboard from './component/Dashboard';
+import { Logout } from './component/Logout';
 
 const App = () => {
   const [Loading, setLoading] = useState(true)
@@ -42,12 +45,14 @@ const App = () => {
           <Route path="/services" element={<Services />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          {/* <Route path="/servicess" element={<Servicess />}></Route> */}
+          <Route path="/servicess" element={<Servicess />}></Route>
+          <Route path="/servicess/:id" element={<SingleService />}></Route>
           <Route path="/resister" element={<Resister />}></Route>
           <Route path="/forgetpass" element={<Forgetpass/>}></Route>
+          <Route path="/logout" element={<Logout/>}></Route>
           </Route>
         </Routes>
-        <Footer/>
+        {/* <Footer/> */}
         </>
         }
         
