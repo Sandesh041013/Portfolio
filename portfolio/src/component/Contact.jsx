@@ -98,7 +98,7 @@ const ContactForm = () => {
 
    {({handleSubmit})=>(
     <div className="bg-gradient-to-b to-black from-gray-900 min-h-screen grid items-center justify-center font-poppins lg:w-screen ">
-        <div className="bg-gray-900 lg:w-[600px] w-[410px] lg:h-max-full rounded-lg grid p-5 lg:p-10 ">
+        <div className="bg-gray-900 lg:w-[600px] w-[410px] lg:h-max-full rounded-lg grid p-5 lg:p-10  ">
           <div className="text-[#9D00FF] lg:text-4xl text-3xl text-center">
             <h1 className="font-semibold ">Contact Us!</h1>
           </div>

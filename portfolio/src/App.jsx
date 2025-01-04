@@ -52,7 +52,7 @@ const App = () => {
           <Route path="/logout" element={<Logout/>}></Route>
           </Route>
         </Routes>
-        {/* <Footer/> */}
+        <Footer/>
         </>
         }
         

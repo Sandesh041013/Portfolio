@@ -92,7 +92,7 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
-            {isloggedin ? (
+            {/* {isloggedin ? (
               <li className="flex text-white mr-10">
                 <Link
                   className="hover:text-indigo-600 flex items-center gap-2"
@@ -110,6 +110,38 @@ const Navbar = () => {
                 >
                   {" "}
                    Login
+                </Link>
+              </li>
+            )} */}
+              {isloggedin ? (
+              <li>
+                <Link
+                  to="/logout"
+                  onClick={() => setIsOpen(false)} // Close menu after logout
+                  className={`flex items-center gap-2 lg:mr-3 transition duration-300 hover:scale-110 ${
+                    active === 'logout'
+                      ? "border-b-2 border-[#9D00FF]"
+                      : "hover:text-[#9D00FF]"
+                  }`}
+                >
+                  Logout
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <Link
+                  to="/login"
+                  onClick={() => {
+                    setActive('login');
+                    setIsOpen(false); // Close menu after login
+                  }}
+                  className={`flex items-center gap-2 lg:mr-3 transition duration-300 hover:scale-110 ${
+                    active === 'login'
+                      ? "border-b-2 border-[#9D00FF]"
+                      : "hover:text-[#9D00FF]"
+                  }`}
+                >
+                  Login
                 </Link>
               </li>
             )}
