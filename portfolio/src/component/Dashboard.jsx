@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
+
+import Adminuser from './Admin/Adminuser';
+import Sidebar from './Admin/Sidebar';
 
 const Dashboard = () => {
   return (
-    <div className=''>
-      this is dashboard
+    <div className='h-screen w-screen bg-black '>
+    <Sidebar/>
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
+

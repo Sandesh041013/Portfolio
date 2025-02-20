@@ -13,7 +13,14 @@ const SingleService = () => {
     }
     const fetchApi = async () => {
         try {
-            const res = await fetch(URL);
+            const res = await fetch(URL,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
             if (res.ok) {
                 const resData = await res.json();
                 console.log(resData); // Log the data to inspect the structure

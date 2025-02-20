@@ -1,6 +1,4 @@
 import React from 'react';
-import Navbar from '../Navigation/Navbar';
-import Footer from '../Navigation/Footer';
 const About = () => {
   return (
     <>

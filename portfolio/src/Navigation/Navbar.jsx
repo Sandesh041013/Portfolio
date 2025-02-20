@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect, useContext } from 'react'
 import { Link, Outlet } from 'react-router-dom';
 import { FaHome } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
@@ -6,18 +6,22 @@ import { FaGears } from "react-icons/fa6";
 import { MdOutlineContactPhone } from "react-icons/md";
 import { RiLoginBoxFill } from "react-icons/ri";
 import { FiMenu, FiX } from "react-icons/fi"; // Hamburger and Close icons
+import { AuthContext } from '../component/Authverify';
+import { IoMdLogIn } from "react-icons/io";
+import { MdSpaceDashboard } from "react-icons/md";
 const Navbar = () => {
+  const {isloggedin}=useContext(AuthContext)
   const [active, setActive] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const [isloggedin, setisloggedin] = useState(false)
-  const checklogin = () => {
-    if (localStorage.getItem('token')) {
-      setisloggedin(true);
-    }
-  }
-  useEffect(() => {
-    checklogin();
-  }, [])
+ 
+  // const checklogin = () => {
+  //   if (localStorage.getItem('token')) {
+  //     setisloggedin(true);
+  //   }
+  // }
+  // useEffect(() => {
+  //   checklogin();
+  // }, [])
   const navItems = [
     {
       id: 1,
@@ -57,6 +61,8 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  // const tokencheck = localStorage.getItem('token');
+
   return (
     <>
       <div className='h-24 bg-black text-slate-200 flex items-center justify-between px-6 fixed w-screen z-50 '>
@@ -92,31 +98,28 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
-            {/* {isloggedin ? (
-              <li className="flex text-white mr-10">
-                <Link
-                  className="hover:text-indigo-600 flex items-center gap-2"
-                  to="/logout"
-                >
-                  {" "}
-                 Logout
-                </Link>
-              </li>
-            ) : (
-              <li className="flex text-white mr-10">
-                <Link
-                  className="hover:text-indigo-600 flex items-center gap-2"
-                  to="/login"
-                >
-                  {" "}
-                   Login
-                </Link>
-              </li>
-            )} */}
+           
               {isloggedin ? (
+                <>
               <li>
+                
                 <Link
                   to="/logout"
+                  onClick={() => setIsOpen(false)} // Close menu after logout
+                  className={ `flex items-center gap-2 lg:mr-3 transition duration-300 hover:scale-110 ${
+                    active === 'logout'
+                      ? "border-b-2 border-[#9D00FF]"
+                      : "hover:text-[#9D00FF]"
+                  }`}
+                >
+                  <IoMdLogIn />
+                  Logout
+                </Link>
+              
+              </li>
+              <li>
+                 <Link
+                  to="/dashboard"
                   onClick={() => setIsOpen(false)} // Close menu after logout
                   className={`flex items-center gap-2 lg:mr-3 transition duration-300 hover:scale-110 ${
                     active === 'logout'
@@ -124,9 +127,12 @@ const Navbar = () => {
                       : "hover:text-[#9D00FF]"
                   }`}
                 >
-                  Logout
+                  <MdSpaceDashboard />
+                  Dashboard
                 </Link>
+                
               </li>
+              </>
             ) : (
               <li>
                 <Link
@@ -134,6 +140,7 @@ const Navbar = () => {
                   onClick={() => {
                     setActive('login');
                     setIsOpen(false); // Close menu after login
+                    
                   }}
                   className={`flex items-center gap-2 lg:mr-3 transition duration-300 hover:scale-110 ${
                     active === 'login'
@@ -141,7 +148,9 @@ const Navbar = () => {
                       : "hover:text-[#9D00FF]"
                   }`}
                 >
+                  <IoMdLogIn />
                   Login
+                  
                 </Link>
               </li>
             )}

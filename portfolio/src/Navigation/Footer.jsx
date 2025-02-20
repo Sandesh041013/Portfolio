@@ -3,7 +3,7 @@ import { FaFacebookF, FaLinkedinIn, FaGithub, FaInstagram } from 'react-icons/fa
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-8 shadow-[0_0_50px_] shadow-gray-700 relative bottom-0 sm:flex-col lg:flex-row lg:w-screen">
+    <footer className="bg-black text-white py-8 shadow-[0_0_50px_] shadow-gray-700 relative bottom-0 sm:flex-col lg:flex-row w-full">
       {/* Logo Section */}
       <div className="flex justify-center mb-4 ">
         <img 
@@ -12,7 +12,6 @@ const Footer = () => {
           className="h-14" 
         />
       </div>
-
       {/* Social Icons Section */}
       <div className="flex justify-center space-x-8 mb-4">
         {/* Facebook Icon with Gradient */}
@@ -23,7 +22,6 @@ const Footer = () => {
         >
           <FaFacebookF size={30} />
         </a>
-
         {/* LinkedIn Icon with Gradient */}
         <a 
           href="linkedin.com/in/sandesh-acharya-7baa31295/details/skills/" 
